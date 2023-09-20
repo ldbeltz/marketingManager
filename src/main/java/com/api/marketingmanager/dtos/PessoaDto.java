@@ -1,4 +1,4 @@
 package com.api.marketingmanager.dtos;
 
-public class UserDto {
+public class PessoaDto {
 }
