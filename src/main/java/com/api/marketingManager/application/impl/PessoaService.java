@@ -25,6 +25,6 @@ public class PessoaService implements PessoaFacade {
     }
 
     public List<PessoaModel> findAll() {
-        return null;
+        return pessoaRepository.findAll();
     }
 }
