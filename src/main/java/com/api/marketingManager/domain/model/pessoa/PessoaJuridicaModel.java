@@ -1,4 +1,4 @@
-package com.api.marketingmanager.models;
+package com.api.marketingManager.domain.model.pessoa;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package com.api.marketingmanager;
+package com.api.marketingManager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

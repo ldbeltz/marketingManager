@@ -1,9 +1,9 @@
-package com.api.marketingmanager.models;
+package com.api.marketingManager.domain.model.pessoa;
 
 import java.util.UUID;
 
 public class PessoaModel {
-    private UUID pessoaId;
+    private Long pessoaId;
     private String nome;
     private String endereco;
     private int numEndereco;
@@ -12,11 +12,11 @@ public class PessoaModel {
     private int dddTelefone;
     private int numTelefone;
 
-    public UUID getPessoaId() {
+    public Long getPessoaId() {
         return pessoaId;
     }
 
-    public void setPessoaId(UUID pessoaId) {
+    public void setPessoaId(Long pessoaId) {
         this.pessoaId = pessoaId;
     }
 
