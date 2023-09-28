@@ -7,6 +7,10 @@ public class PessoaJuridicaModel extends PessoaModel{
     private LocalDate dtaCadastro;
     private String cpfResponsavel;
 
+    public PessoaJuridicaModel(Long pessoaId, String nome, String endereco, int numEndereco, String cep, String email, int dddTelefone, int numTelefone) {
+        super(pessoaId, nome, endereco, numEndereco, cep, email, dddTelefone, numTelefone);
+    }
+
     public String getCnpj() {
         return cnpj;
     }

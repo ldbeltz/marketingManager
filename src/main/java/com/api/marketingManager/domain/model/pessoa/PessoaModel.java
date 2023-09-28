@@ -12,6 +12,17 @@ public class PessoaModel {
     private int dddTelefone;
     private int numTelefone;
 
+    public PessoaModel(Long pessoaId, String nome, String endereco, int numEndereco, String cep, String email, int dddTelefone, int numTelefone) {
+        this.pessoaId = pessoaId;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.numEndereco = numEndereco;
+        this.cep = cep;
+        this.email = email;
+        this.dddTelefone = dddTelefone;
+        this.numTelefone = numTelefone;
+    }
+
     public Long getPessoaId() {
         return pessoaId;
     }

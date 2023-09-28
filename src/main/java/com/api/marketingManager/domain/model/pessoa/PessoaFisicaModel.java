@@ -6,6 +6,10 @@ public class PessoaFisicaModel extends PessoaModel{
     private String numCpf;
     private LocalDate dtaNascimento;
 
+    public PessoaFisicaModel(Long pessoaId, String nome, String endereco, int numEndereco, String cep, String email, int dddTelefone, int numTelefone) {
+        super(pessoaId, nome, endereco, numEndereco, cep, email, dddTelefone, numTelefone);
+    }
+
     public String getNumCpf() {
         return numCpf;
     }

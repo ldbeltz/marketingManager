@@ -7,6 +7,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.List;
 
+import static com.api.marketingManager.infrastructure.persistence.jdbc.queries.PessoaQuery.PESSOA_SELECT_QUERY;
+
 public class JdbcPessoaRepository {
 
     private final JdbcTemplate jdbcTemplate;
@@ -17,6 +19,6 @@ public class JdbcPessoaRepository {
     }
 
     public List<PessoaPersistence> findAll(){
-        return jdbcTemplate.query("", new PessoaRowMapper());
+        return jdbcTemplate.query(PESSOA_SELECT_QUERY, new PessoaRowMapper());
     }
 }
