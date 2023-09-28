@@ -1,6 +1,6 @@
-package com.api.marketingManager.infrastructure.persistence.pessoa;
+package com.api.marketingManager.api.infrastructure.persistence.pessoa;
 
-import com.api.marketingManager.domain.model.pessoa.PessoaModel;
+import com.api.marketingManager.api.domain.model.pessoa.PessoaModel;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,7 +15,12 @@ public class PessoaPersistenceConversor {
                 pessoaPersistence.getCep(),
                 pessoaPersistence.getEmail(),
                 pessoaPersistence.getDddTelefone(),
-                pessoaPersistence.getNumTelefone()
+                pessoaPersistence.getNumTelefone(),
+                pessoaPersistence.getNumCpf(),
+                pessoaPersistence.getDtaNascimento(),
+                pessoaPersistence.getCnpj(),
+                pessoaPersistence.getDtaCadastro(),
+                pessoaPersistence.getCpfResponsavel()
         );
     }
     public static List<PessoaModel> toModelList(List<PessoaPersistence> pessoas){

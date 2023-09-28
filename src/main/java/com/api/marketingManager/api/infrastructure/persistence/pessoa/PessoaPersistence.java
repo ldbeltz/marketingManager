@@ -1,8 +1,8 @@
-package com.api.marketingManager.domain.model.pessoa;
+package com.api.marketingManager.api.infrastructure.persistence.pessoa;
 
-import java.util.UUID;
+import java.time.LocalDate;
 
-public class PessoaModel {
+public class PessoaPersistence {
     private Long pessoaId;
     private String nome;
     private String endereco;
@@ -11,8 +11,13 @@ public class PessoaModel {
     private String email;
     private int dddTelefone;
     private int numTelefone;
+    private String numCpf;
+    private LocalDate dtaNascimento;
+    private String cnpj;
+    private LocalDate dtaCadastro;
+    private String cpfResponsavel;
 
-    public PessoaModel(Long pessoaId, String nome, String endereco, int numEndereco, String cep, String email, int dddTelefone, int numTelefone) {
+    public PessoaPersistence(Long pessoaId, String nome, String endereco, int numEndereco, String cep, String email, int dddTelefone, int numTelefone, String numCpf, LocalDate dtaNascimento, String cnpj, LocalDate dtaCadastro, String cpfResponsavel) {
         this.pessoaId = pessoaId;
         this.nome = nome;
         this.endereco = endereco;
@@ -21,6 +26,11 @@ public class PessoaModel {
         this.email = email;
         this.dddTelefone = dddTelefone;
         this.numTelefone = numTelefone;
+        this.numCpf = numCpf;
+        this.dtaNascimento = dtaNascimento;
+        this.cnpj = cnpj;
+        this.dtaCadastro = dtaCadastro;
+        this.cpfResponsavel = cpfResponsavel;
     }
 
     public Long getPessoaId() {
@@ -85,5 +95,45 @@ public class PessoaModel {
 
     public void setNumTelefone(int numTelefone) {
         this.numTelefone = numTelefone;
+    }
+
+    public String getNumCpf() {
+        return numCpf;
+    }
+
+    public void setNumCpf(String numCpf) {
+        this.numCpf = numCpf;
+    }
+
+    public LocalDate getDtaNascimento() {
+        return dtaNascimento;
+    }
+
+    public void setDtaNascimento(LocalDate dtaNascimento) {
+        this.dtaNascimento = dtaNascimento;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
+    }
+
+    public LocalDate getDtaCadastro() {
+        return dtaCadastro;
+    }
+
+    public void setDtaCadastro(LocalDate dtaCadastro) {
+        this.dtaCadastro = dtaCadastro;
+    }
+
+    public String getCpfResponsavel() {
+        return cpfResponsavel;
+    }
+
+    public void setCpfResponsavel(String cpfResponsavel) {
+        this.cpfResponsavel = cpfResponsavel;
     }
 }

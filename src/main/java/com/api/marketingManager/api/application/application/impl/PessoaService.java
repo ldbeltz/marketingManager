@@ -1,13 +1,14 @@
-package com.api.marketingManager.application.impl;
+package com.api.marketingManager.api.application.application.impl;
 
-import com.api.marketingManager.application.PessoaFacade;
-import com.api.marketingManager.domain.model.pessoa.PessoaModel;
-import com.api.marketingManager.domain.model.pessoa.PessoaRepository;
-import com.api.marketingManager.dtos.PessoaDto;
+import com.api.marketingManager.api.application.application.PessoaFacade;
+import com.api.marketingManager.api.domain.model.pessoa.PessoaModel;
+import com.api.marketingManager.api.domain.model.pessoa.PessoaRepository;
+import com.api.marketingManager.api.application.dtos.PessoaDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class PessoaService implements PessoaFacade {
     private final PessoaRepository pessoaRepository;
 

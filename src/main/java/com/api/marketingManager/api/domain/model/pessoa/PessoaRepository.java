@@ -1,4 +1,4 @@
-package com.api.marketingManager.domain.model.pessoa;
+package com.api.marketingManager.api.domain.model.pessoa;
 
 import java.util.List;
 

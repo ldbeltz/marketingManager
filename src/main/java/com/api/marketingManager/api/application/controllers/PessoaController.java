@@ -1,13 +1,12 @@
-package com.api.marketingManager.controllers;
+package com.api.marketingManager.api.application.controllers;
 
-import com.api.marketingManager.application.PessoaFacade;
-import com.api.marketingManager.domain.model.pessoa.PessoaModel;
+import com.api.marketingManager.api.application.application.PessoaFacade;
+import com.api.marketingManager.api.domain.model.pessoa.PessoaModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;

@@ -1,8 +1,9 @@
-package com.api.marketingManager.infrastructure.persistence;
+package com.api.marketingManager.api.infrastructure.persistence;
 
-import com.api.marketingManager.domain.model.pessoa.PessoaModel;
-import com.api.marketingManager.domain.model.pessoa.PessoaRepository;
-import com.api.marketingManager.infrastructure.persistence.jdbc.JdbcPessoaRepository;
+import com.api.marketingManager.api.domain.model.pessoa.PessoaModel;
+import com.api.marketingManager.api.domain.model.pessoa.PessoaRepository;
+import com.api.marketingManager.api.infrastructure.persistence.jdbc.JdbcPessoaRepository;
+import com.api.marketingManager.api.infrastructure.persistence.pessoa.PessoaPersistenceConversor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +24,6 @@ public class PessoaRepositoryPostgres implements PessoaRepository {
     }
 
     public List<PessoaModel> findAll() {
-        return null;
+        return PessoaPersistenceConversor.toModelList(jdbcPessoaRepository.findAll());
     }
 }
