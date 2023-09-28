@@ -3,11 +3,13 @@ package com.api.marketingManager.api.infrastructure.persistence;
 import com.api.marketingManager.api.domain.model.pessoa.PessoaModel;
 import com.api.marketingManager.api.domain.model.pessoa.PessoaRepository;
 import com.api.marketingManager.api.infrastructure.persistence.jdbc.JdbcPessoaRepository;
+import com.api.marketingManager.api.infrastructure.persistence.pessoa.PessoaPersistence;
 import com.api.marketingManager.api.infrastructure.persistence.pessoa.PessoaPersistenceConversor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class PessoaRepositoryPostgres implements PessoaRepository {
@@ -19,8 +21,14 @@ public class PessoaRepositoryPostgres implements PessoaRepository {
         this.jdbcPessoaRepository = jdbcPessoaRepository;
     }
 
-    public PessoaModel findPessoa(Long idPessoa) {
-        return null;
+    public PessoaModel findByCPF(String CPF) {
+        PessoaPersistence pessoaPersistence = jdbcPessoaRepository.findByCPF(CPF);
+        return (pessoaPersistence != null) ? PessoaPersistenceConversor.toModel(pessoaPersistence) : null;
+    }
+
+    public PessoaModel findByCNPJ(String CNPJ) {
+        PessoaPersistence pessoaPersistence = jdbcPessoaRepository.findByCNPJ(CNPJ);
+        return (pessoaPersistence != null) ? PessoaPersistenceConversor.toModel(pessoaPersistence) : null;
     }
 
     public List<PessoaModel> findAll() {

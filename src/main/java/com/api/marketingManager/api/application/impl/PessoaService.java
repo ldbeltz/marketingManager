@@ -1,13 +1,15 @@
-package com.api.marketingManager.api.application.application.impl;
+package com.api.marketingManager.api.application.impl;
 
-import com.api.marketingManager.api.application.application.PessoaFacade;
+import com.api.marketingManager.api.application.PessoaFacade;
 import com.api.marketingManager.api.domain.model.pessoa.PessoaModel;
 import com.api.marketingManager.api.domain.model.pessoa.PessoaRepository;
-import com.api.marketingManager.api.application.dtos.PessoaDto;
+import com.api.marketingManager.api.view.dtos.PessoaDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+
 @Service
 public class PessoaService implements PessoaFacade {
     private final PessoaRepository pessoaRepository;
@@ -17,12 +19,16 @@ public class PessoaService implements PessoaFacade {
         this.pessoaRepository = pessoaRepository;
     }
 
-    public Long cadPessoa(PessoaDto pessoaDto) {
+    public PessoaModel save(PessoaDto pessoaDto) {
         return null;
     }
 
-    public PessoaDto findPessoa(Long idPessoa) {
-        return null;
+    public PessoaModel findByCPF(String CPF) {
+        return pessoaRepository.findByCPF(CPF);
+    }
+
+    public PessoaModel findByCNPJ(String CNPJ) {
+        return pessoaRepository.findByCNPJ(CNPJ);
     }
 
     public List<PessoaModel> findAll() {
