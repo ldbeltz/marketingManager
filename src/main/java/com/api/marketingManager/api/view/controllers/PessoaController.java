@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -34,6 +31,7 @@ public class PessoaController {
         return ResponseEntity.status(HttpStatus.OK).body(pessoaService.findAll());
     }
 
+    @PostMapping
     public ResponseEntity<Object> savePessoa(@RequestBody PessoaDto pessoaDto){
         if (pessoaService.findByCPF(pessoaDto.getNumCpf()) != null){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Este cpf já está cadastrado no sistema.");
@@ -41,10 +39,10 @@ public class PessoaController {
         if (pessoaService.findByCNPJ(pessoaDto.getCnpj()) != null){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Conflito: Este cnpj já está cadastrado no sistema.");
         }
-       /* var pessoaModel = new PessoaModel(null,null,null,0,null,null,0,0,null,null,null,null,null);
+        var pessoaModel = new PessoaModel();
         BeanUtils.copyProperties(pessoaDto, pessoaModel);
-        pessoaModel.setDtaCadastro(LocalDate.now(ZoneId.of("UTC")));*/
-        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.save(pessoaDto));
+        //pessoaModel.setDtaCadastro(LocalDate.now(ZoneId.of("UTC")));
+        return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.save(pessoaModel));
     }
     @GetMapping("/{cpf-cnpj}")
     public ResponseEntity<Object> getPessoa(@PathVariable(value = "cpf-cnpj")String identificador){

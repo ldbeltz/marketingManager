@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface PessoaFacade {
 
-    PessoaModel save(PessoaDto pessoaDto);
+    PessoaModel save(PessoaModel pessoaModel);
 
     PessoaModel findByCNPJ(String CNPJ);
 

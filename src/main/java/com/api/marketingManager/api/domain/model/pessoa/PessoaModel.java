@@ -18,6 +18,9 @@ public class PessoaModel {
     private LocalDate dtaCadastro;
     private String cpfResponsavel;
 
+    public PessoaModel() {
+    }
+
     public PessoaModel(Long pessoaId, String nome, String endereco, int numEndereco, String cep, String email, int dddTelefone, int numTelefone, String numCpf, LocalDate dtaNascimento, String cnpj, LocalDate dtaCadastro, String cpfResponsavel) {
         this.pessoaId = pessoaId;
         this.nome = nome;

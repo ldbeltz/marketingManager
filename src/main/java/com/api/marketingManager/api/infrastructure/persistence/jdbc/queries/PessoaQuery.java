@@ -8,4 +8,14 @@ public class PessoaQuery {
                                                      "FROM pessoa pe " +
                                                      "LEFT JOIN pessoa_fisica pf ON (pe.ID_PESSOA = pf.ID_PESSOA) " +
                                                      "LEFT JOIN pessoa_juridica pj ON (pe.ID_PESSOA = pj.ID_PESSOA) ";
+    public static final String PESSOA_INSERT_QUERY = "INSERT INTO pessoa (" +
+                                                     " nome_pessoa," +
+                                                     " endereco, " +
+                                                     " num_enderreco," +
+                                                     " cep," +
+                                                     " email," +
+                                                     " ddd_telefone," +
+                                                     " num_telefone) " +
+                                                     "VALUES" +
+                                                     "(?,?,?,?,?,?,?); ";
 }

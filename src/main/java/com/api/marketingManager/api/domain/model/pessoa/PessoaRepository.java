@@ -5,6 +5,7 @@ import java.util.Optional;
 
 public interface PessoaRepository {
 
+    PessoaModel save(PessoaModel pessoaModel);
     PessoaModel findByCPF(String CPF);
 
     PessoaModel findByCNPJ(String CNPJ);

@@ -23,6 +23,23 @@ public class PessoaPersistenceConversor {
                 pessoaPersistence.getCpfResponsavel()
         );
     }
+
+    public static PessoaPersistence toPersistence(PessoaModel pessoaModel){
+        return new PessoaPersistence(null,
+                pessoaModel.getNome(),
+                pessoaModel.getEndereco(),
+                pessoaModel.getNumEndereco(),
+                pessoaModel.getCep(),
+                pessoaModel.getEmail(),
+                pessoaModel.getDddTelefone(),
+                pessoaModel.getNumTelefone(),
+                pessoaModel.getNumCpf(),
+                pessoaModel.getDtaNascimento(),
+                pessoaModel.getCnpj(),
+                pessoaModel.getDtaCadastro(),
+                pessoaModel.getCpfResponsavel()
+        );
+    }
     public static List<PessoaModel> toModelList(List<PessoaPersistence> pessoas){
         return pessoas.stream()
                 .map(PessoaPersistenceConversor::toModel)

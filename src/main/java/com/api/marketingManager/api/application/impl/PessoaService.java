@@ -19,9 +19,8 @@ public class PessoaService implements PessoaFacade {
         this.pessoaRepository = pessoaRepository;
     }
 
-    public PessoaModel save(PessoaDto pessoaDto) {
-        return null;
-    }
+    public PessoaModel save(PessoaModel pessoaModel) {
+        return pessoaRepository.save(pessoaModel);    }
 
     public PessoaModel findByCPF(String CPF) {
         return pessoaRepository.findByCPF(CPF);
