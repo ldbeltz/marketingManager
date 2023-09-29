@@ -1,16 +1,19 @@
 package com.api.marketingManager.api.view.dtos;
 
+import java.time.LocalDate;
+
 public class PessoaDto {
     private String nome;
     private String endereco;
-    private String numEndereco;
-    private String cep;
+    private int numEndereco;
+    private int cep;
     private String email;
-    private String dddTelefone;
-    private String numTelefone;
+    private int dddTelefone;
+    private int numTelefone;
     private String numCpf;
-    private String dtaNascimento;
+    private LocalDate dtaNascimento;
     private String cnpj;
+    private LocalDate dtaCadastro;
     private String cpfResponsavel;
 
     public String getNome() {
@@ -29,19 +32,19 @@ public class PessoaDto {
         this.endereco = endereco;
     }
 
-    public String getNumEndereco() {
+    public int getNumEndereco() {
         return numEndereco;
     }
 
-    public void setNumEndereco(String numEndereco) {
+    public void setNumEndereco(int numEndereco) {
         this.numEndereco = numEndereco;
     }
 
-    public String getCep() {
+    public int getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
+    public void setCep(int cep) {
         this.cep = cep;
     }
 
@@ -53,19 +56,19 @@ public class PessoaDto {
         this.email = email;
     }
 
-    public String getDddTelefone() {
+    public int getDddTelefone() {
         return dddTelefone;
     }
 
-    public void setDddTelefone(String dddTelefone) {
+    public void setDddTelefone(int dddTelefone) {
         this.dddTelefone = dddTelefone;
     }
 
-    public String getNumTelefone() {
+    public int getNumTelefone() {
         return numTelefone;
     }
 
-    public void setNumTelefone(String numTelefone) {
+    public void setNumTelefone(int numTelefone) {
         this.numTelefone = numTelefone;
     }
 
@@ -77,11 +80,11 @@ public class PessoaDto {
         this.numCpf = numCpf;
     }
 
-    public String getDtaNascimento() {
+    public LocalDate getDtaNascimento() {
         return dtaNascimento;
     }
 
-    public void setDtaNascimento(String dtaNascimento) {
+    public void setDtaNascimento(LocalDate dtaNascimento) {
         this.dtaNascimento = dtaNascimento;
     }
 
@@ -91,6 +94,14 @@ public class PessoaDto {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    public LocalDate getDtaCadastro() {
+        return dtaCadastro;
+    }
+
+    public void setDtaCadastro(LocalDate dtaCadastro) {
+        this.dtaCadastro = dtaCadastro;
     }
 
     public String getCpfResponsavel() {

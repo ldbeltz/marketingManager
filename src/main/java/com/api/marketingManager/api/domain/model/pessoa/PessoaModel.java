@@ -8,7 +8,7 @@ public class PessoaModel {
     private String nome;
     private String endereco;
     private int numEndereco;
-    private String cep;
+    private int cep;
     private String email;
     private int dddTelefone;
     private int numTelefone;
@@ -21,7 +21,7 @@ public class PessoaModel {
     public PessoaModel() {
     }
 
-    public PessoaModel(Long pessoaId, String nome, String endereco, int numEndereco, String cep, String email, int dddTelefone, int numTelefone, String numCpf, LocalDate dtaNascimento, String cnpj, LocalDate dtaCadastro, String cpfResponsavel) {
+    public PessoaModel(Long pessoaId, String nome, String endereco, int numEndereco, int cep, String email, int dddTelefone, int numTelefone, String numCpf, LocalDate dtaNascimento, String cnpj, LocalDate dtaCadastro, String cpfResponsavel) {
         this.pessoaId = pessoaId;
         this.nome = nome;
         this.endereco = endereco;
@@ -69,11 +69,11 @@ public class PessoaModel {
         this.numEndereco = numEndereco;
     }
 
-    public String getCep() {
+    public int getCep() {
         return cep;
     }
 
-    public void setCep(String cep) {
+    public void setCep(int cep) {
         this.cep = cep;
     }
 

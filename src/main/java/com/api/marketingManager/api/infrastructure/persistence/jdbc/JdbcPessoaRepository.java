@@ -26,47 +26,54 @@ public class JdbcPessoaRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-     public void save (PessoaPersistence pessoaPersistence){
-       //TODO
-        /* String query = "";
-        if (pessoaPersistence.getCep() != null){
-            query = " INSERT INTO pessoa_fisica (id_pessoa, cpf, dta_nascimento) VALUES (SELECT last_inserted_id(), ?, ?)";
-        } else {
-            query = " INSERT INTO pessoa_juridica (id_pessoa, cnpj, dta_cadastro, cpf_responsavel) VALUES (SELECT last_inserted_id(), ?, ?, ?)";
-        }
+     public PessoaPersistence save (PessoaPersistence pessoaPersistence){
+         String query = "";
 
-        jdbcTemplate.update(PESSOA_INSERT_QUERY + query)
-        int[] arr = jdbcTemplate.batchUpdate(PESSOA_INSERT_QUERY + query, new BatchPreparedStatementSetter() {
-            @Override
+         pessoaPersistence.setPessoaId(jdbcTemplate.query("SELECT nextval('pessoa_id_pessoa_seq')",
+                 rs -> {
+                    if (rs.next()){
+                        return rs.getLong(1);
+                    } else {
+                        throw new SQLException("Não foi possivel efetuar o registro, erro de banco de dados.");
+                    }
+                 }));
 
-            public void setValues(PreparedStatement ps, int i) throws SQLException {
-                ps.setObject(1, pessoaPersistence.getNome());
-                ps.setObject(2, pessoaPersistence.getEndereco());
-                ps.setObject(3, pessoaPersistence.getNumEndereco());
-                ps.setObject(4, pessoaPersistence.getCep());
-                ps.setObject(5, pessoaPersistence.getEmail());
-                ps.setObject(6, pessoaPersistence.getDddTelefone());
-                ps.setObject(7, pessoaPersistence.getNumTelefone());
-                if (pessoaPersistence.getCep() != null){
-                    ps.setObject(8, pessoaPersistence.getNumCpf());
-                    ps.setObject(9, pessoaPersistence.getDtaNascimento());
-                } else {
-                    ps.setObject(8, pessoaPersistence.getCnpj());
-                    ps.setObject(9, pessoaPersistence.getDtaCadastro());
-                    ps.setObject(10, pessoaPersistence.getCpfResponsavel());
-                }
-                ps.executeUpdate();
-            }
-            @Override
-            public int getBatchSize() {
-                return 0;
-            }
-        });
-       /* if (pessoaPersistence.getCep() != null){
-            return findByCPF(pessoaPersistence.getNumCpf());
-        } else {
-            return findByCNPJ(pessoaPersistence.getCnpj());
-        }*/
+         if (pessoaPersistence.getNumCpf() != null){
+             query = " INSERT INTO pessoa_fisica (id_pessoa, cpf, dta_nascimento) VALUES (?, ?, ?)";
+             jdbcTemplate.update(PESSOA_INSERT_QUERY + query,
+                     pessoaPersistence.getPessoaId(),
+                     pessoaPersistence.getNome(),
+                     pessoaPersistence.getEndereco(),
+                     pessoaPersistence.getNumEndereco(),
+                     pessoaPersistence.getCep(),
+                     pessoaPersistence.getEmail(),
+                     pessoaPersistence.getDddTelefone(),
+                     pessoaPersistence.getNumTelefone(),
+                     pessoaPersistence.getDtaCadastro(),
+                     pessoaPersistence.getPessoaId(),
+                     pessoaPersistence.getNumCpf(),
+                     pessoaPersistence.getDtaNascimento()
+                     );
+             return findByCPF(pessoaPersistence.getNumCpf());
+         } else {
+             query = " INSERT INTO pessoa_juridica (id_pessoa, cnpj, dta_cadastro, cpf_responsavel) VALUES (?, ?, ?, ?)";
+             jdbcTemplate.update(PESSOA_INSERT_QUERY + query,
+                     pessoaPersistence.getPessoaId(),
+                     pessoaPersistence.getNome(),
+                     pessoaPersistence.getEndereco(),
+                     pessoaPersistence.getNumEndereco(),
+                     pessoaPersistence.getCep(),
+                     pessoaPersistence.getEmail(),
+                     pessoaPersistence.getDddTelefone(),
+                     pessoaPersistence.getNumTelefone(),
+                     pessoaPersistence.getDtaCadastro(),
+                     pessoaPersistence.getPessoaId(),
+                     pessoaPersistence.getCnpj(),
+                     pessoaPersistence.getDtaCadastro(),
+                     pessoaPersistence.getCpfResponsavel()
+                     );
+             return findByCNPJ(pessoaPersistence.getCnpj());
+         }
     }
     public List<PessoaPersistence> findAll(){
         return jdbcTemplate.query(PessoaQuery.PESSOA_SELECT_QUERY, new PessoaRowMapper());

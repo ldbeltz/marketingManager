@@ -22,14 +22,7 @@ public class PessoaRepositoryPostgres implements PessoaRepository {
     }
 
     public PessoaModel save(PessoaModel pessoaModel){
-        //TODO
-        /*jdbcPessoaRepository.save(PessoaPersistenceConversor.toPersistence(pessoaModel));
-        if (pessoaModel.getCep() != null){
-            return findByCPF(pessoaModel.getNumCpf());
-        } else {
-            return findByCNPJ(pessoaModel.getCnpj());
-        }*/
-        return null;
+        return PessoaPersistenceConversor.toModel(jdbcPessoaRepository.save(PessoaPersistenceConversor.toPersistence(pessoaModel)));
     }
     public PessoaModel findByCPF(String CPF) {
         PessoaPersistence pessoaPersistence = jdbcPessoaRepository.findByCPF(CPF);

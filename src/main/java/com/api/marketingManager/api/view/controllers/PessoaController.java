@@ -41,7 +41,7 @@ public class PessoaController {
         }
         var pessoaModel = new PessoaModel();
         BeanUtils.copyProperties(pessoaDto, pessoaModel);
-        //pessoaModel.setDtaCadastro(LocalDate.now(ZoneId.of("UTC")));
+        pessoaModel.setDtaCadastro(LocalDate.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.save(pessoaModel));
     }
     @GetMapping("/{cpf-cnpj}")

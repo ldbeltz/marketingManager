@@ -16,7 +16,7 @@ public class PessoaRowMapper implements RowMapper<PessoaPersistence> {
                 resultSet.getString("NOME_PESSOA"),
                 resultSet.getString("ENDERECO"),
                 resultSet.getInt("NUM_ENDERECO"),
-                resultSet.getString("CEP"),
+                resultSet.getInt("CEP"),
                 resultSet.getString("EMAIL"),
                 resultSet.getInt("DDD_TELEFONE"),
                 resultSet.getInt("NUM_TELEFONE"),
