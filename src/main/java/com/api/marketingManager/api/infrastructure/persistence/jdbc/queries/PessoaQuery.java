@@ -20,4 +20,16 @@ public class PessoaQuery {
                                                      " dta_cadastro) " +
                                                      "VALUES" +
                                                      "(?,?,?,?,?,?,?,?,?); ";
+
+    public static final String PESSOA_UPDATE_QUERY = "UPDATE pessoa SET " +
+                                                     " nome_pessoa = ?," +
+                                                     " endereco  = ?," +
+                                                     " num_endereco = ?," +
+                                                     " cep = ?," +
+                                                     " email = ?," +
+                                                     " ddd_telefone = ?," +
+                                                     " num_telefone = ? " +
+                                                     "WHERE id_pessoa = ?; ";
+
+    public static final String PESSOA_DELETE_QUERY = "DELETE FROM pessoa WHERE id_pessoa = ?";
 }

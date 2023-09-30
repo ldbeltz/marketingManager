@@ -44,23 +44,38 @@ public class PessoaController {
         pessoaModel.setDtaCadastro(LocalDate.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(pessoaService.save(pessoaModel));
     }
-    @GetMapping("/{cpf-cnpj}")
-    public ResponseEntity<Object> getPessoa(@PathVariable(value = "cpf-cnpj")String identificador){
-        if (identificador.length() == 11){
-            PessoaModel pessoaModel = pessoaService.findByCPF(identificador);
-            if (pessoaModel == null){
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cpf não encontrado.");
-            }
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getPessoa(@PathVariable(value = "id")Long id){
+        PessoaModel pessoaModel = pessoaService.findById(id);
+        if (pessoaModel != null){
             return ResponseEntity.status(HttpStatus.OK).body(pessoaModel);
         }
-        if (identificador.length() == 14){
-            PessoaModel pessoaModel = pessoaService.findByCNPJ(identificador);
-            if (pessoaModel == null){
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cnpj não encontrado.");
-            }
-            return ResponseEntity.status(HttpStatus.OK).body(pessoaModel);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não cadastrada no sistema.");
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updatePessoa(@PathVariable(value = "id") Long id,
+                                               @RequestBody PessoaDto pessoaDto){
+        PessoaModel pessoaModel = pessoaService.findById(id);
+        if (pessoaModel == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não cadastrada no sistema.");
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cpf/Cnpj inválido.");
+        Long pessoaId = pessoaModel.getPessoaId();
+        LocalDate dtaCadastroPessoa = pessoaModel.getDtaCadastro();
+
+        BeanUtils.copyProperties(pessoaDto, pessoaModel);
+        pessoaModel.setPessoaId(pessoaId);
+        pessoaModel.setDtaCadastro(dtaCadastroPessoa);
+        return ResponseEntity.status(HttpStatus.OK).body(pessoaService.update(pessoaModel));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deletePessoa(@PathVariable(value = "id") Long id){
+        PessoaModel pessoaModel = pessoaService.findById(id);
+        if (pessoaModel == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pessoa não cadastrada no sistema.");
+        }
+        pessoaService.delete(pessoaModel);
+        return ResponseEntity.status(HttpStatus.OK).body("Pessoa removida com sucesso.");
     }
 
 

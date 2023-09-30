@@ -22,6 +22,10 @@ public class PessoaService implements PessoaFacade {
     public PessoaModel save(PessoaModel pessoaModel) {
         return pessoaRepository.save(pessoaModel);    }
 
+    public PessoaModel findById(Long id) {
+        return pessoaRepository.findById(id);
+    }
+
     public PessoaModel findByCPF(String CPF) {
         return pessoaRepository.findByCPF(CPF);
     }
@@ -32,5 +36,13 @@ public class PessoaService implements PessoaFacade {
 
     public List<PessoaModel> findAll() {
         return pessoaRepository.findAll();
+    }
+
+    public PessoaModel update(PessoaModel pessoaModel){
+        return pessoaRepository.update(pessoaModel);
+    }
+
+    public void delete(PessoaModel pessoaModel){
+        pessoaRepository.delete(pessoaModel);
     }
 }

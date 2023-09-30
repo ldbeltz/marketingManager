@@ -24,6 +24,11 @@ public class PessoaRepositoryPostgres implements PessoaRepository {
     public PessoaModel save(PessoaModel pessoaModel){
         return PessoaPersistenceConversor.toModel(jdbcPessoaRepository.save(PessoaPersistenceConversor.toPersistence(pessoaModel)));
     }
+
+    public PessoaModel findById(Long id) {
+        PessoaPersistence pessoaPersistence = jdbcPessoaRepository.findById(id);
+        return (pessoaPersistence != null) ? PessoaPersistenceConversor.toModel(pessoaPersistence) : null;
+    }
     public PessoaModel findByCPF(String CPF) {
         PessoaPersistence pessoaPersistence = jdbcPessoaRepository.findByCPF(CPF);
         return (pessoaPersistence != null) ? PessoaPersistenceConversor.toModel(pessoaPersistence) : null;
@@ -36,5 +41,13 @@ public class PessoaRepositoryPostgres implements PessoaRepository {
 
     public List<PessoaModel> findAll() {
         return PessoaPersistenceConversor.toModelList(jdbcPessoaRepository.findAll());
+    }
+
+    public PessoaModel update(PessoaModel pessoaModel){
+        return PessoaPersistenceConversor.toModel(jdbcPessoaRepository.update(PessoaPersistenceConversor.toPersistence(pessoaModel)));
+    }
+
+    public void delete(PessoaModel pessoaModel){
+        jdbcPessoaRepository.delete(PessoaPersistenceConversor.toPersistence(pessoaModel));
     }
 }

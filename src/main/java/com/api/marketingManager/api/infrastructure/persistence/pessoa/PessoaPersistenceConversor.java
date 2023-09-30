@@ -25,7 +25,7 @@ public class PessoaPersistenceConversor {
     }
 
     public static PessoaPersistence toPersistence(PessoaModel pessoaModel){
-        return new PessoaPersistence(null,
+        return new PessoaPersistence(pessoaModel.getPessoaId(),
                 pessoaModel.getNome(),
                 pessoaModel.getEndereco(),
                 pessoaModel.getNumEndereco(),

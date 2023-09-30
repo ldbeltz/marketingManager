@@ -11,9 +11,15 @@ public interface PessoaFacade {
 
     PessoaModel save(PessoaModel pessoaModel);
 
+    PessoaModel findById(Long id);
+
     PessoaModel findByCNPJ(String CNPJ);
 
     PessoaModel findByCPF(String CPF);
 
     List<PessoaModel> findAll();
+
+    PessoaModel update(PessoaModel pessoaModel);
+
+    void delete(PessoaModel pessoaModel);
 }
