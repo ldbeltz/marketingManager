@@ -3,7 +3,6 @@ package com.api.marketingManager.api.application.impl;
 import com.api.marketingManager.api.application.PessoaFacade;
 import com.api.marketingManager.api.domain.model.pessoa.PessoaModel;
 import com.api.marketingManager.api.domain.model.pessoa.PessoaRepository;
-import com.api.marketingManager.api.view.dtos.PessoaDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

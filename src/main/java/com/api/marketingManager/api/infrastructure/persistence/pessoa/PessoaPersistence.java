@@ -33,6 +33,10 @@ public class PessoaPersistence {
         this.cpfResponsavel = cpfResponsavel;
     }
 
+    public PessoaPersistence(String cnpj){
+        this.cnpj = cnpj;
+    }
+
     public Long getPessoaId() {
         return pessoaId;
     }
