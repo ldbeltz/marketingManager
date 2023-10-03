@@ -1,6 +1,7 @@
 package com.api.marketingManager.api.view.controllers;
 
 import com.api.marketingManager.api.application.ContratoFacade;
+import com.api.marketingManager.api.application.PessoaFacade;
 import com.api.marketingManager.api.domain.model.contrato.ContratoModel;
 import com.api.marketingManager.api.view.dtos.ContratoDto;
 import org.springframework.beans.BeanUtils;
@@ -16,10 +17,12 @@ import java.util.List;
 public class ContratoController {
 
     private final ContratoFacade contratoService;
+    private final PessoaFacade pessoaService;
 
     @Autowired
-    public ContratoController(ContratoFacade contratoService) {
+    public ContratoController(ContratoFacade contratoService, PessoaFacade pessoaService) {
         this.contratoService = contratoService;
+        this.pessoaService = pessoaService;
     }
 
     @GetMapping
@@ -31,6 +34,9 @@ public class ContratoController {
     public ResponseEntity<Object> saveContrato(@RequestBody ContratoDto contratoDto){
         var contratoModel = new ContratoModel();
         BeanUtils.copyProperties(contratoDto, contratoModel);
+        if (pessoaService.findByCNPJ(contratoModel.getCnpjContratante()) == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cnpj não cadastrado no sistema.");
+        }
         return ResponseEntity.status(HttpStatus.CREATED).body(contratoService.save(contratoModel));
     }
     @GetMapping("/{id}")
@@ -49,10 +55,11 @@ public class ContratoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Contrato não cadastrado no sistema.");
         }
         Long idContrato = contratoModel.getIdContrato();
-
         BeanUtils.copyProperties(contratoDto, contratoModel);
         contratoModel.setIdContrato(idContrato);
-
+        if (pessoaService.findByCNPJ(contratoModel.getCnpjContratante()) == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cnpj não cadastrado no sistema.");
+        }
         return ResponseEntity.status(HttpStatus.OK).body(contratoService.update(contratoModel));
     }
 

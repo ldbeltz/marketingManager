@@ -21,7 +21,7 @@ public class ContratoQuery {
                                                         " id_tipo_contrato)" +
                                                         " VALUES (?,?,?,?,?,?,?) ";
 
-    public static final String CONTRATO_UPDATE_QUERY =  "UPDATE contrato SET " +
+    public static final String CONTRATO_UPDATE_QUERY =  "UPDATE contratos SET " +
                                                         " dta_inicio = ?," +
                                                         " dta_fim = ?," +
                                                         " valor_contrato = ?," +
